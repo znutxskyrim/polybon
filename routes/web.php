@@ -18,3 +18,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/login/custom','UserController@home')->name('login.custom');

@@ -4,8 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -81,6 +87,7 @@ class UserController extends Controller
     {
         //
     }
+
     /*
      *  Home
      *
@@ -88,12 +95,14 @@ class UserController extends Controller
      */
     public function home(Request $request)
     {
-        if($this->middleware('auth')) {
-            $data = $request->all();
-            var_dump(Auth::user());
-            return view('home', $data);
+        if(Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ]))
+        {
+            $user = User::where('email',$request->email)->first();
+            return view('home',$user);
         }
-
     }
 
 }
