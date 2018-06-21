@@ -18,7 +18,7 @@ class PrivilegeMiddleware
         if(!Auth::check()){
            return redirect('/');
         }
-        if(Auth::user()->getRole() != 'Admin')
+        if(Auth::user()->isRegular())
         {
             return redirect('/home');
         }
