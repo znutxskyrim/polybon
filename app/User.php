@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','role'
+        'name', 'email', 'password','person_id'
     ];
 
     /**
@@ -27,12 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function  isAdmin()
-    {
-        return $this->role == 'Admin';
-    }
-
-    public function isRegular(){
-        return $this->role == 'Saleman';
+    function role(){
+        $_userrole = UserRole::find($this->id);
+        $_role = $_userrole->role();
+        return $_role;
     }
 }
