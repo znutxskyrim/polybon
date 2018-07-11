@@ -18,4 +18,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', 'ProductController@home')->name('Product.home');
+Route::post('/test','ProductController@create')->name('Product.create');
+/*
 Route::post('/login/custom','UserController@home')->name('login.custom');
+*/

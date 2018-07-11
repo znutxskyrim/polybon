@@ -9,12 +9,18 @@
 
                 <div class="card-body">
                     Your welcome {{ $user->name  }} !
-                    {{ $user->role()->description }}.
+                    {{ $user->role->description }}.
 
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
+                    @endif
+
+                    @if ($user->role->create_user)
+                        " Create User == True "
+                    @else
+                        " Create User == False "
                     @endif
                 </div>
             </div>

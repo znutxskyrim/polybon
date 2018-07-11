@@ -5,8 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+
+/**
+ * Class UserController
+ * @package App\Http\Controllers
+ */
 class UserController extends Controller
 {
+    /**
+     * UserController constructor.
+     */
     public function __construct()
     {
 
@@ -88,10 +96,11 @@ class UserController extends Controller
         //
     }
 
-    /*
-     *  Home
-     *
-     *
+
+    /**
+     * return Home View
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function home(Request $request)
     {

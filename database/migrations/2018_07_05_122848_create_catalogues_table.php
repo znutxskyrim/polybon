@@ -13,7 +13,7 @@ class CreateCataloguesTable extends Migration
      */
     public function up()
     {
-        Schema::create('catalogues', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->string("product_id")->primary();
             $table->integer("quantity");
             $table->double("price");
