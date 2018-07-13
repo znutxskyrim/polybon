@@ -2,46 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProductRequest;
-use App\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-
+use App\Product;
+use App\Http\Requests\ProductRequest;
 /**
  * Class ProductController
  * @package App\Http\Controllers
  */
 class ProductController extends Controller
 {
-    /**
-     * ProductController constructor.
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    //
-    /**
-     * @param Request $request
-     */
-    public function store(ProductRequest $request){
-        $validate = $request->validated();
-        dd($request->description);
-        Product::create([
-            'product_id' => $request->product_id,
-            'product_name' => $request->product_name,
-            'description' => $request->description,
-            'product_type_id' => $request->product_type_id
-        ]);
-    }
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function home()
-    {
-        return view('test');
-    }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -50,4 +20,74 @@ class ProductController extends Controller
         $product = Product::all();
         return view('product',['products' => $product]);
     }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+
+    /**
+     * @param ProductRequest $request
+     */
+    public function store(ProductRequest $request){
+        $validate = $request->validated();
+        Product::create([
+            'product_id' => $request->product_id,
+            'product_name' => $request->product_name,
+            'description' => $request->description,
+            'product_type_id' => $request->product_type_id
+        ]);
+        return redirect()->route('product.index');
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
 }

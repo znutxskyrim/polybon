@@ -2,25 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Category;
-/**
- * Class CategoryController
- * @package App\Http\Controllers
- */
 class CategoryController extends Controller
 {
     /**
-     * CategoryController constructor.
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
+    public function index(){
+        $category = Category::all();
+        return view('category',['categories' => $category]);
     }
 
     /**
-     * @param CategoryRequest $request
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request){
         $validate = $request->validated();
@@ -29,13 +39,51 @@ class CategoryController extends Controller
             'quantity' => $request->quantity,
             'price' => $request->price
         ]);
+        return redirect()->route('category.index');
     }
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $category = Category::all();
-        return view('category',['categories' => $category]);
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }

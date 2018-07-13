@@ -18,16 +18,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware' => 'auth'],function(){
+    Route::resources([
+        'producttype' => 'ProductTypeController',
+        'product' => 'ProductController',
+        'category' => 'CategoryController',
+    ]);
+});
 
-Route::get('/product', 'ProductController@index')->name('Product.index');
-Route::post('/product','ProductController@store')->name('Product.store');
-
-
-Route::get('/type', 'ProductTypeController@index')->name('ProductType.index');
-Route::post('/type','ProductTypeController@store')->name('ProductType.store');
-
-Route::get('/category', 'CategoryController@index')->name('Category.index');
-Route::post('/category','CategoryController@store')->name('Category.store');
 /*
 Route::post('/login/custom','UserController@home')->name('login.custom');
 */
