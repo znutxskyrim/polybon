@@ -15,6 +15,8 @@ class Category extends Model
      * @var string
      */
     protected $table = "categories";
+    protected $primaryKey ='product_id';
+    public $incrementing = false;
 
     /**
      * @var array

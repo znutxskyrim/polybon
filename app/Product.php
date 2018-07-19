@@ -14,6 +14,8 @@ class Product extends Model
     /**
      * @var string
      */
+    protected $primaryKey = 'product_id';
+    public $incrementing = false;
     protected $table = "products";
 
     /**

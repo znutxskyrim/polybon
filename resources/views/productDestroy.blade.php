@@ -15,7 +15,7 @@
 @foreach ($products as $product)
     <li>{{$product->product_id}} || {{$product->product_name}} Bath || {{$product->description}} Unit</li>
 @endforeach
-{!! Form::open(['route' => 'product.store'])!!}
+{!! Form::open(['route' => ['product.destroy',$products[0]->product_id],'method'=>'delete'])!!}
 
 {{Form::text('product_id')}}
 {{Form::text('product_name')}}

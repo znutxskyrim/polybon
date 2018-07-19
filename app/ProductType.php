@@ -15,7 +15,8 @@ class ProductType extends Model
      * @var string
      */
     protected $table = "producttypes";
-
+    protected $primaryKey = 'product_tyoe_id';
+    public $incrementing = false;
     /**
      * @var array
      */

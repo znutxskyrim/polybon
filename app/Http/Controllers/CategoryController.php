@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
 use App\Category;
 class CategoryController extends Controller
@@ -71,9 +72,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
         //
+        $_Category = Category::where('product_id', '=', $id)->first();
+        $_Category->product_id = $request->product_id;
+        $_Category->quantity = $request->price;
+        $_Category->save();
+        return redirect()->route('category.index');
     }
 
     /**
@@ -85,5 +91,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        $_Category = Category::where('product_id', '=', $id)->first();
+        $_Category->delete();
+        return redirect()->rotue('category.index');
     }
 }
