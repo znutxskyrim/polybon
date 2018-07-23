@@ -21,5 +21,18 @@ class Person extends Model
      */
     protected $fillable = [
         'firstname'
-        ,'lastname'];
+        ,'lastname'
+        ,'address'
+        ,'villagenumber'
+        ,'alley'
+        ,'road'
+        ,'subdistrict'
+        ,'district'
+        ,'province'
+        ,'postcode'
+        ,'phonenumber'
+        ,'phonenumber_con'
+        ,'fax'
+        ,'email'
+    ];
 }

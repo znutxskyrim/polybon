@@ -17,6 +17,20 @@ class CreatePersonsTable extends Migration
             $table->increments('id');
             $table->string('firstname');
             $table->string('lastname');
+            $table->string('address');
+            $table->string('villagenumber');
+            $table->string('alley');
+            $table->string('road');
+            $table->string('subdistrict');
+            $table->string('district');
+            $table->string('province');
+            $table->string('postcode');
+            $table->string('phonenumber');
+            $table->string('phonenumber_con');
+            $table->string('fax');
+            $table->string('email');
+            $table->string('department');
+            $table->string('ext');
             $table->timestamps();
         });
     }
