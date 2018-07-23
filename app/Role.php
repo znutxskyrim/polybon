@@ -19,7 +19,7 @@ class Role extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    function UserRole(){
+    function UserRoles(){
         return $this->hasMany('App\UserRole','role_name','role_names');
     }
 }

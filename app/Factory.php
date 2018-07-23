@@ -33,4 +33,8 @@ class Factory extends Model
         ,'fax'
         ,'email'
     ];
+
+    public function companyfactories(){
+        return $this->hasMany('App\CompanyFactory','factory_id','id');
+    }
 }

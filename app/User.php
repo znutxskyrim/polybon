@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'person_id'
+        'name', 'email', 'password', 'person_id','territory_id'
     ];
 
     /**
@@ -34,8 +34,13 @@ class User extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    function role()
+    public function role()
     {
         return $this->hasOne('App\UserRole','user_id','id');
     }
+
+    public function territory(){
+        return $this->belongsTo('App\Territory','territory_id','id');
+    }
+
 }

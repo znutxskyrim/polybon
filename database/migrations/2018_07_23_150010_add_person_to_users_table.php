@@ -17,6 +17,8 @@ class AddPersonToUsersTable extends Migration
             //
             $table->unsignedInteger("person_id");
             $table->foreign("person_id")->references("id")->on("persons");
+            $table->unsignedInteger('territory_id');
+            $table->foreign('territory_id')->references('id')->on('territories');
         });
     }
 

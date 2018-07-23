@@ -20,4 +20,8 @@ class Region extends Model
      * @var array
      */
     protected $fillable = ['description'];
+
+    public function territories(){
+        return $this->hasMany('App\Territory','region_id','id');
+    }
 }

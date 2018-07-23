@@ -27,7 +27,7 @@ class ProductType extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function product(){
+    public function products(){
         return $this->hasMany('App\Product','product_type_id','product_type_id');
     }
 

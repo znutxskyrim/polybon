@@ -17,9 +17,9 @@ class CreateCompaniesTable extends Migration
             $table->increments('id');
             $table->string("company_name");
             $table->unsignedInteger("employee_id");
-            $table->unsignedInteger('business_type');
+            $table->unsignedInteger('business_id');
             $table->foreign("employee_id")->references("id")->on("clients");
-            $table->foreign('business_type')->references('id')->on("businesstypes");
+            $table->foreign('business_id')->references('id')->on("businesstypes");
             $table->timestamps();
         });
     }

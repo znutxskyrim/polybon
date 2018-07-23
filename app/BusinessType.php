@@ -5,10 +5,10 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class BussinessType
+ * Class BusinessType
  * @package App
  */
-class BussinessType extends Model
+class BusinessType extends Model
 {
     //
     /**
@@ -19,4 +19,9 @@ class BussinessType extends Model
      * @var array
      */
     protected $fillable = ['business_name'];
+
+    public function companies()
+    {
+        return $this->hasMany('App\Company','business_id','id');
+    }
 }

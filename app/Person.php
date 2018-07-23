@@ -35,4 +35,5 @@ class Person extends Model
         ,'fax'
         ,'email'
     ];
+
 }
