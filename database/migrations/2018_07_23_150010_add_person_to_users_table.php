@@ -15,10 +15,10 @@ class AddPersonToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->unsignedInteger("person_id");
-            $table->foreign("person_id")->references("id")->on("persons");
-            $table->unsignedInteger('territory_id');
-            $table->foreign('territory_id')->references('id')->on('territories');
+            $table->unsignedInteger("person_id")->nullable();
+            $table->foreign("person_id")->references("id")->on("persons")->onUpdate('cascade');
+            $table->unsignedInteger('territory_id')->nullable();
+            $table->foreign('territory_id')->references('id')->on('territories')->onUpdate('cascade');
         });
     }
 

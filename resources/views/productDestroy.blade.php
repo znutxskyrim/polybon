@@ -11,7 +11,7 @@
   $product->type->product_type_id
   $product->type->description
 -->
-
+@if (!$products->isEmpty())
 @foreach ($products as $product)
     <li>{{$product->product_id}} || {{$product->product_name}} Bath || {{$product->description}} Unit</li>
 @endforeach
@@ -24,6 +24,9 @@
 {{Form::submit('Click me !')}}
 {!! Form::close() !!}
 
+@else
+    hello
+@endif
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

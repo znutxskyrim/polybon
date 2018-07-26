@@ -18,8 +18,8 @@ class CreateCompaniesTable extends Migration
             $table->string("company_name");
             $table->unsignedInteger("employee_id");
             $table->unsignedInteger('business_id');
-            $table->foreign("employee_id")->references("id")->on("clients");
-            $table->foreign('business_id')->references('id')->on("businesstypes");
+            $table->foreign("employee_id")->references("id")->on("clients")->onUpdate('cascade');
+            $table->foreign('business_id')->references('id')->on("businesstypes")->onUpdate('cascade');
             $table->timestamps();
         });
     }

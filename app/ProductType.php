@@ -15,7 +15,14 @@ class ProductType extends Model
      * @var string
      */
     protected $table = "producttypes";
-    protected $primaryKey = 'product_tyoe_id';
+    /**
+     * @var string
+     */
+    protected $primaryKey = 'product_type_id';
+    /**
+     * @var bool
+     * Set When Find ID  ( Int to  String )
+     */
     public $incrementing = false;
     /**
      * @var array

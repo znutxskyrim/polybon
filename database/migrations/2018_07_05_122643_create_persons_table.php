@@ -15,22 +15,22 @@ class CreatePersonsTable extends Migration
     {
         Schema::create('persons', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstname');
-            $table->string('lastname');
-            $table->string('address');
-            $table->string('villagenumber');
-            $table->string('alley');
-            $table->string('road');
-            $table->string('subdistrict');
-            $table->string('district');
-            $table->string('province');
-            $table->string('postcode');
-            $table->string('phonenumber');
-            $table->string('phonenumber_con');
-            $table->string('fax');
-            $table->string('email');
-            $table->string('department');
-            $table->string('ext');
+            $table->string('firstname')->nullable();
+            $table->string('lastname')->nullable();
+            $table->string('address')->nullable();
+            $table->string('villagenumber')->nullable();
+            $table->string('alley')->nullable();
+            $table->string('road')->nullable();
+            $table->string('subdistrict')->nullable();
+            $table->string('district')->nullable();
+            $table->string('province')->nullable();
+            $table->string('postcode')->nullable();
+            $table->string('phonenumber')->nullable();
+            $table->string('phonenumber_con')->nullable();
+            $table->string('fax')->nullable();
+            $table->string('email')->nullable();
+            $table->string('department')->nullable();
+            $table->string('ext')->nullable();
             $table->timestamps();
         });
     }

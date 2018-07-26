@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Http\Requests\ProductRequest;
@@ -18,7 +19,7 @@ class ProductController extends Controller
      */
     public function index(){
         $product = Product::all();
-        return view('productDestroy',['products' => $product]);
+        return view('product',['products' => $product]);
     }
 
     /**
@@ -51,10 +52,9 @@ class ProductController extends Controller
      * @param  string  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
-        $_product = Product::where('product_id','=',$id)->first();
+
     }
 
     /**
@@ -63,7 +63,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
         //
     }
@@ -75,15 +75,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductRequest $request, $id)
+    public function update(ProductRequest $request, Product $product)
     {
-        //
-        $_product = Product::where('product_id','=',$id)->first();
-        $_product->product_id = $request->product_id;
-        $_product->product_name = $request->product_name;
-        $_product->description = $request->description;
-        $_product->product_type_id = $request->product_type_id;
-        $_product->save();
+        $product->update($request->all());
         return redirect()->route('product.index');
     }
 
@@ -93,11 +87,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
-        $_product = Product::where('product_id','=',$id)->first();
-        $_product->delete();
+        $category->delete();
         return redirect()->route('product.index');
     }
 

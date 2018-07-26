@@ -17,8 +17,8 @@ class CreateCompanyfactoriesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('company_id');
             $table->unsignedInteger('factory_id');
-            $table->foreign('company_id')->references('id')->on('companies');
-            $table->foreign('factory_id')->references('id')->on('factories');
+            $table->foreign('company_id')->references('id')->on('companies')->onUpdate('cascade');
+            $table->foreign('factory_id')->references('id')->on('factories')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -8,6 +8,11 @@ use App\ProductType;
 
 class ProductTypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role', ['only' => 'index']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +20,7 @@ class ProductTypeController extends Controller
      */
     public function index()
     {
+        $this->middleware('role');
         $type = ProductType::all();
         return view('ProductType', ['types' => $type]);
     }
@@ -51,9 +57,9 @@ class ProductTypeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(ProductType $productType)
     {
-        //
+        //return view('ProductType', ['types' => $productType]);
     }
 
     /**
@@ -74,13 +80,10 @@ class ProductTypeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProductTypeRequest $request, $id)
+    public function update(ProductTypeRequest $request, ProductType $productType)
     {
-        //
-        $_type = ProductType::where('product_type_id', '=', $id)->first();
-        $_type->product_type_id = $request->product_type_id;
-        $_type->description = $request->description;
-        $_type->save();
+
+        $productType->update($request->all());
         return redirect()->route('producttype.index');
     }
 
@@ -90,11 +93,9 @@ class ProductTypeController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductType $productType)
     {
-        //
-        $_type = ProductType::where('product_type_id','=',$id)->first();
-        $_type->delete();
+        $productType->delete();
         return redirect()->route('producttype.index');
     }
 }

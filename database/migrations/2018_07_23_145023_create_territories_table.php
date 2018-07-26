@@ -15,9 +15,9 @@ class CreateTerritoriesTable extends Migration
     {
         Schema::create('territories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("description");
-            $table->unsignedInteger('region_id');
-            $table->foreign('region_id')->references('id')->on('region');
+            $table->string("description")->nullable();
+            $table->unsignedInteger('region_id')->nullable();
+            $table->foreign('region_id')->references('id')->on('region')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CompanyRequest;
 use Illuminate\Http\Request;
-use App\Category;
-class CategoryController extends Controller
+use App\Company;
+use Illuminate\Support\Facades\App;
+
+class CompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
-        $category = Category::all();
-        return view('category',['categories' => $category]);
+    public function index()
+    {
+        $company = Company::all();
+        return view('company',['companies' => $company]);
     }
 
     /**
@@ -33,14 +36,15 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request){
-        $validate = $request->validated();
-        Category::create([
-            'product_id' => $request->product_id,
-            'quantity' => $request->quantity,
-            'price' => $request->price
+    public function store(CompanyRequest $request)
+    {
+        //
+        Company::create([
+            'company_name',
+            'employee_id',
+            'business_id'
         ]);
-        return redirect()->route('category.index');
+        return redirect()->route('company.index');
     }
 
     /**
@@ -49,9 +53,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show( Company $company)
     {
         //
+        return redirect()->route('company.index');
     }
 
     /**
@@ -60,9 +65,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit( Company $company)
     {
         //
+
     }
 
     /**
@@ -72,10 +78,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CategoryRequest $request, Category $category)
+    public function update(CompanyRequest $request, Company $company)
     {
-        $category->update($request->all());
-        return redirect()->route('category.index');
+        //
+        $company->update($request->all());
+        return redirect()->route('company.index');
     }
 
     /**
@@ -84,9 +91,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Company $company)
     {
-        $category->delete();
-        return redirect()->rotue('category.index');
+        //
+        $company->delete();
+        return redirect()->route('company.index');
     }
 }

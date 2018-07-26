@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'person_id','territory_id'
+        'name', 'email', 'password', 'person_id', 'territory_id'
     ];
 
     /**
@@ -36,11 +36,27 @@ class User extends Authenticatable
      */
     public function role()
     {
-        return $this->hasOne('App\UserRole','user_id','id');
+        return $this->hasOne('App\UserRole', 'user_id', 'id');
     }
 
-    public function territory(){
-        return $this->belongsTo('App\Territory','territory_id','id');
+    public function territory()
+    {
+        return $this->belongsTo('App\Territory', 'territory_id', 'id');
     }
 
+    public function isAdmin()
+    {
+        if ($this->role->role->role_name == 'Admin') {
+            return true;
+        }
+        return false;
+    }
+
+    public function isSalesman()
+    {
+        if ($this->role->role->role_name == 'Salesman') {
+            return true;
+        }
+        return false;
+    }
 }

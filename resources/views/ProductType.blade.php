@@ -12,3 +12,19 @@
 @foreach ($types as $type)
     <li>{{$type->product_type_id}} || {{$type->description}} Unit</li>
 @endforeach
+{!! Form::open(['route' => ['producttype.update',$types[0]->product_type_id],'method'=>'PUT'])!!}
+
+{{Form::text('product_type_id')}}
+{{Form::text('description')}}
+{{Form::submit('Click me !')}}
+{!! Form::close() !!}
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
