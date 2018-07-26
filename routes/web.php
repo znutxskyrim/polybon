@@ -23,6 +23,10 @@ Route::group(['middleware' => 'auth'],function(){
         'producttype' => 'ProductTypeController',
         'product' => 'ProductController',
         'category' => 'CategoryController',
+        'company' => 'CompanyController',
+        'businesstype' => 'BusinessTypeController',
+        'client' => 'ClientController',
+        'companyfactory' => 'CompanyFactory',
     ]);
 });
 

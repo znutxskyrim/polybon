@@ -13,7 +13,7 @@ class CreateRegionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('region', function (Blueprint $table) {
+        Schema::create('regions', function (Blueprint $table) {
             $table->increments('id');
             $table->string("description")->nullable();
             $table->timestamps();

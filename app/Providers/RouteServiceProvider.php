@@ -31,6 +31,13 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('product','App\Product');
         Route::model('category','App\Category');
         Route::model('company','App\Company');
+        Route::model('businesstype','App\BusinessType');
+        Route::model('client','App\Client');
+        Route::model('companyfactory','App\CompanyFactory');
+        Route::model('factory','App\Factory');
+        Route::model('person','App\Person');
+        Route::model('region','App\Region');
+        Route::model('territory','App\Territory');
     }
 
     /**
