@@ -31,6 +31,14 @@ class Product extends Model
     public function type(){
         return $this->belongsTo('App\ProductType','product_type_id','product_type_id');
     }
+    public function sort(Request $request, $sortby, $order){
+        $sql = 'SELECT ORDER BY '.$sortby.' '.$order;
+        $product = DB::select($sql);
+        return view('product',
+            ['product' => $product,
+                'order'=>$order,]
+        );
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -39,3 +47,4 @@ class Product extends Model
         return $this->hasOne('App\Category','product_id','product_id');
     }
 }
+
